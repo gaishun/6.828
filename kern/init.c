@@ -9,6 +9,22 @@
 #include <kern/pmap.h>
 #include <kern/kclock.h>
 
+<<<<<<< HEAD
+=======
+// Test the stack backtrace function (lab 1 only)
+void
+test_backtrace(int x)
+{
+
+	//cprintf("entering test_backtrace %d\n", x);
+	if (x > 0){
+		test_backtrace(x-1);
+	}else
+		mon_backtrace(0, 0, 0);
+	cprintf("test_backtrace\n");
+	//cprintf("leaving test_backtrace %d\n", x);
+}
+>>>>>>> lab1
 
 void
 i386_init(void)
@@ -19,16 +35,26 @@ i386_init(void)
 	// Clear the uninitialized global data (BSS) section of our program.
 	// This ensures that all static/global variables start out zero.
 	memset(edata, 0, end - edata);
-
+	
 	// Initialize the console.
 	// Can't call cprintf until after we do this!
 	cons_init();
 
 	cprintf("6828 decimal is %o octal!\n", 6828);
 
+<<<<<<< HEAD
 	// Lab 2 memory management initialization functions
 	mem_init();
 
+=======
+
+//unsigned int i = 0x00646c72;
+//cprintf("H%x Wo%s\n", 57616, &i);//gao dizhi cun diwei shuju
+
+	// Test the stack backtrace function (lab 1 only)
+	test_backtrace(5);
+	cprintf("i386_init\n");	
+>>>>>>> lab1
 	// Drop into the kernel monitor.
 	while (1)
 		monitor(NULL);

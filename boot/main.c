@@ -38,6 +38,8 @@ void readseg(uint32_t, uint32_t, uint32_t);
 void
 bootmain(void)
 {
+
+
 	struct Proghdr *ph, *eph;
 
 	// read 1st page off disk
